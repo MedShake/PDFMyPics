@@ -13,7 +13,7 @@ The **recommended way to install PDFMyPics** is to use the Debian package provid
 Download the latest `pdfmypics_..._all.deb` package and install it with:
 
 ```bash
-sudo apt install ./pdfmypics_0.1.0_all.deb
+sudo apt install ./pdfmypics_*.deb
 ```
 The package also installs the application icon, desktop launcher, and translations (Tests made with Linux Mint).
 
@@ -24,7 +24,12 @@ New versions are published as `.deb` packages in the project's Releases.
 Download the new package and install it using the same command:
 
 ```bash
-sudo apt install ./pdfmypics_VERSION_all.deb
+sudo apt install ./pdfmypics_*.deb
+```
+### Remove
+
+```bash
+sudo apt remove pdfmypics
 ```
 
 ## Usage
