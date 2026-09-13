@@ -9,7 +9,7 @@ from reportlab.lib.pagesizes import (
 )
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
-
+from .i18n import formater_date
 
 DPI_HIGH = 300
 POINTS_PER_INCH = 72
@@ -219,11 +219,9 @@ def creer_pdf(
             if afficher_dates:
 
                 texte = (
-                    date.strftime(
-                        "%d/%m/%Y  %H:%M:%S"
-                    )
+                    formater_date(date)
                     if date
-                    else "date inconnue"
+                    else _("date inconnue")
                 )
 
                 pdf.setFont(
@@ -247,7 +245,7 @@ def creer_pdf(
         except Exception as erreur:
 
             print(
-                "Erreur :",
+                _("Erreur :"),
                 fichier,
                 erreur
             )
@@ -262,7 +260,11 @@ def creer_pdf(
 
         progression_callback(
             pourcentage,
-            f"Page {page_courante} / {total_pages}"
+            _("Page %(page)d / %(total)d")
+            % {
+                "page": page_courante,
+                "total": total_pages
+            }
         )
 
     pdf.save()

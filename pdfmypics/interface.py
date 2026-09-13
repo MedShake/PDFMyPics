@@ -8,7 +8,7 @@ gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk, GLib, GdkPixbuf, Gdk
 from PIL import Image, ImageOps, ImageDraw, ImageFont
-
+from . import i18n
 
 def construire_interface(self):
     principal = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -37,13 +37,13 @@ def construire_interface(self):
     # TITRE
     # ========================================================
 
-    titre = Gtk.Label(label="PDFMyPics")
+    titre = Gtk.Label(label=_("PDFMyPics"))
     titre.set_halign(Gtk.Align.START)
     titre.add_css_class("title-1")
     gauche.append(titre)
 
     description = Gtk.Label(
-        label=(
+        label=_(
             "Créez rapidement des planches de vos photos "
             "classées par date sous forme de PDF."
         )
@@ -61,22 +61,22 @@ def construire_interface(self):
     carte.add_css_class("card")
     gauche.append(carte)
 
-    label = Gtk.Label(label="Photos")
+    label = Gtk.Label(label=_("Photos"))
     label.set_halign(Gtk.Align.START)
     label.add_css_class("title-3")
     carte.append(label)
 
-    self.label_dossier = Gtk.Label(label="Aucun dossier sélectionné")
+    self.label_dossier = Gtk.Label(label=_("Aucun dossier sélectionné"))
     self.label_dossier.set_wrap(True)
     self.label_dossier.set_halign(Gtk.Align.START)
     carte.append(self.label_dossier)
 
-    bouton = Gtk.Button(label="📁 Choisir un dossier")
+    bouton = Gtk.Button(label=_("📁 Choisir un dossier"))
     bouton.add_css_class("suggested-action")
     bouton.connect("clicked", self.choisir_dossier)
     carte.append(bouton)
 
-    self.label_infos = Gtk.Label(label="Aucune photo chargée")
+    self.label_infos = Gtk.Label(label=_("Aucune photo chargée"))
     self.label_infos.set_halign(Gtk.Align.START)
     self.label_infos.add_css_class("dim-label")
     carte.append(self.label_infos)
@@ -85,7 +85,7 @@ def construire_interface(self):
     # MISE EN PAGE
     # ========================================================
 
-    label = Gtk.Label(label="Mise en page")
+    label = Gtk.Label(label=_("Mise en page"))
     label.set_halign(Gtk.Align.START)
     label.add_css_class("title-3")
     gauche.append(label)
@@ -96,7 +96,7 @@ def construire_interface(self):
     gauche.append(grille)
 
     # Colonnes
-    grille.attach(Gtk.Label(label="Colonnes"), 0, 0, 1, 1)
+    grille.attach(Gtk.Label(label=_("Colonnes")), 0, 0, 1, 1)
 
     self.combo_colonnes = Gtk.DropDown.new_from_strings([str(i) for i in range(1, 10)])
     self.combo_colonnes.set_selected(3)
@@ -105,7 +105,7 @@ def construire_interface(self):
     grille.attach(self.combo_colonnes, 1, 0, 1, 1)
 
     # Lignes
-    grille.attach(Gtk.Label(label="Lignes"), 2, 0, 1, 1)
+    grille.attach(Gtk.Label(label=_("Lignes")), 2, 0, 1, 1)
 
     self.combo_lignes = Gtk.DropDown.new_from_strings([str(i) for i in range(1, 10)])
     self.combo_lignes.set_selected(2)
@@ -114,19 +114,19 @@ def construire_interface(self):
     grille.attach(self.combo_lignes, 3, 0, 1, 1)
 
     # Orientation
-    grille.attach(Gtk.Label(label="Orientation"), 0, 1, 1, 1)
+    grille.attach(Gtk.Label(label=_("Orientation")), 0, 1, 1, 1)
 
-    self.combo_orientation = Gtk.DropDown.new_from_strings(["Paysage", "Portrait"])
+    self.combo_orientation = Gtk.DropDown.new_from_strings([_("Paysage"), _("Portrait")])
     self.combo_orientation.set_selected(0)
     self.combo_orientation.connect("notify::selected", self.option_modifiee)
 
     grille.attach(self.combo_orientation, 1, 1, 3, 1)
 
     # Tri des dates
-    grille.attach(Gtk.Label(label="Tri par dates"), 0, 2, 1, 1)
+    grille.attach(Gtk.Label(label=_("Tri par dates")), 0, 2, 1, 1)
 
     self.combo_tri_date = Gtk.DropDown.new_from_strings(
-        ["Plus récentes → plus anciennes", "Plus anciennes → plus récentes"]
+        [_("Plus récentes → plus anciennes"), _("Plus anciennes → plus récentes")]
     )
     self.combo_tri_date.set_selected(0)
     self.combo_tri_date.connect("notify::selected", self.option_modifiee)
@@ -134,7 +134,7 @@ def construire_interface(self):
     grille.attach(self.combo_tri_date, 1, 2, 3, 1)
 
     # Dates
-    self.check_dates = Gtk.CheckButton(label="Afficher date et heure")
+    self.check_dates = Gtk.CheckButton(label=_("Afficher date et heure"))
     self.check_dates.set_active(True)
     self.check_dates.connect("toggled", self.option_modifiee)
     gauche.append(self.check_dates)
@@ -143,18 +143,18 @@ def construire_interface(self):
     # FICHIER DE SORTIE
     # ========================================================
 
-    label = Gtk.Label(label="Fichier de sortie")
+    label = Gtk.Label(label=_("Fichier de sortie"))
     label.set_halign(Gtk.Align.START)
     label.add_css_class("title-3")
     gauche.append(label)
 
-    self.label_pdf = Gtk.Label(label="Aucun fichier PDF")
+    self.label_pdf = Gtk.Label(label=_("Aucun fichier PDF"))
     self.label_pdf.set_wrap(True)
     self.label_pdf.set_halign(Gtk.Align.START)
     self.label_pdf.add_css_class("dim-label")
     gauche.append(self.label_pdf)
 
-    bouton_pdf = Gtk.Button(label="💾 Choisir le fichier PDF")
+    bouton_pdf = Gtk.Button(label=_("💾 Choisir le fichier PDF"))
     bouton_pdf.connect("clicked", self.choisir_pdf)
     gauche.append(bouton_pdf)
 
@@ -162,7 +162,7 @@ def construire_interface(self):
     # PROGRESSION
     # ========================================================
 
-    self.label_progress = Gtk.Label(label="Prêt")
+    self.label_progress = Gtk.Label(label=_("Prêt"))
     self.label_progress.set_halign(Gtk.Align.START)
     gauche.append(self.label_progress)
 
@@ -173,7 +173,7 @@ def construire_interface(self):
     # BOUTON CREER
     # ========================================================
 
-    self.bouton_creer = Gtk.Button(label="Créer le PDF")
+    self.bouton_creer = Gtk.Button(label=_("Créer le PDF"))
     self.bouton_creer.add_css_class("suggested-action")
     self.bouton_creer.add_css_class("pill")
     self.bouton_creer.set_margin_top(10)
@@ -191,7 +191,7 @@ def construire_interface(self):
     droite.set_margin_end(20)
     contenu.set_end_child(droite)
 
-    titre_preview = Gtk.Label(label="Prévisualisation")
+    titre_preview = Gtk.Label(label=_("Prévisualisation"))
     titre_preview.add_css_class("title-2")
     titre_preview.set_halign(Gtk.Align.START)
     droite.append(titre_preview)
@@ -217,7 +217,7 @@ def construire_interface(self):
     precedent.connect("clicked", self.page_precedente)
     navigation.append(precedent)
 
-    self.label_page = Gtk.Label(label="Page 0 / 0")
+    self.label_page = Gtk.Label(label=_("Page 0 / 0"))
     navigation.append(self.label_page)
 
     suivant = Gtk.Button(label="›")
@@ -241,7 +241,7 @@ def afficher_a_propos(self):
     dialogue.set_version("0.1.0")
 
     dialogue.set_comments(
-        "Créez rapidement des planches de vos photos classées par date sous forme de PDF."
+        _("Créez rapidement des planches de vos photos classées par date sous forme de PDF.")
     )
 
     dialogue.set_authors([
@@ -253,8 +253,10 @@ def afficher_a_propos(self):
     )
 
     dialogue.set_license(
-        "PDFMyPics est un logiciel libre distribué sous "
-        "licence GNU General Public License version 3 ou ultérieure."
+        _(
+            "PDFMyPics est un logiciel libre distribué sous "
+            "licence GNU General Public License version 3 ou ultérieure."
+        )
     )
 
     dialogue.present()
@@ -262,7 +264,7 @@ def afficher_a_propos(self):
 
 def creer_apercu(self):
     if not self.photos:
-        self.label_page.set_text("Aucune photo")
+        self.label_page.set_text(_("Aucune photo"))
         self.preview.set_paintable(None)
         return
 
@@ -278,7 +280,13 @@ def creer_apercu(self):
 
     photos_page_liste = self.photos[debut:fin]
 
-    self.label_page.set_text(f"Page {self.page_apercu + 1} / {total_pages}")
+    self.label_page.set_text(
+        _("Page %(page)d / %(total)d")
+        % {
+            "page": self.page_apercu + 1,
+            "total": total_pages
+        }
+    )
 
     threading.Thread(
         target=self.generer_image_apercu, args=(photos_page_liste,), daemon=True
@@ -359,9 +367,9 @@ def generer_image_apercu(self, photos):
 
                 if self.afficher_dates:
                     if photo["date"]:
-                        texte = photo["date"].strftime("%d/%m/%Y %H:%M:%S")
+                        texte = i18n.formater_date(photo["date"])
                     else:
-                        texte = "date inconnue"
+                        texte = _("date inconnue")
 
                     font_utilisee = ImageFont.load_default()
 
@@ -393,7 +401,7 @@ def generer_image_apercu(self, photos):
                     image_page.paste(txt_img, (px, py), txt_img)
 
         except Exception as erreur:
-            print("Erreur aperçu :", photo["fichier"], erreur)
+            print(_("Erreur aperçu :"), photo["fichier"], erreur)
 
     buffer = BytesIO()
 
@@ -415,7 +423,7 @@ def generer_image_apercu(self, photos):
             self.preview.set_paintable(texture)
 
         except Exception as erreur:
-            print("Erreur affichage aperçu :", erreur)
+            print(_("Erreur affichage aperçu :"), erreur)
 
         return False
 

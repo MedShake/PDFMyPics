@@ -1,5 +1,6 @@
 import os
 import threading
+from .i18n import initialiser_traduction
 
 import gi
 
@@ -75,6 +76,8 @@ class PDFMyPicsApp(Gtk.Application):
    
     def do_activate(self):
 
+        initialiser_traduction()
+
         if self.fenetre is None:
 
             self.fenetre = Gtk.ApplicationWindow(
@@ -97,7 +100,7 @@ class PDFMyPicsApp(Gtk.Application):
 
             barre = Gtk.HeaderBar()
 
-            titre = Gtk.Label(label="PDFMyPics")
+            titre = Gtk.Label(label=_("PDFMyPics"))
             titre.add_css_class("title-2")
 
             barre.set_title_widget(titre)
@@ -125,12 +128,12 @@ class PDFMyPicsApp(Gtk.Application):
             menu = Gio.Menu.new()
 
             menu.append(
-                "À propos de PDFMyPics",
+                _("À propos de PDFMyPics"),
                 "app.about"
             )
 
             menu.append(
-                "Quitter",
+                _("Quitter"),
                 "app.quit"
             )
 
@@ -161,7 +164,7 @@ class PDFMyPicsApp(Gtk.Application):
             )
 
             bouton_menu.set_tooltip_text(
-                "Menu"
+                _("Menu")
             )
 
             bouton_menu.set_menu_model(
@@ -203,7 +206,7 @@ class PDFMyPicsApp(Gtk.Application):
         dialogue = Gtk.FileDialog.new()
 
         dialogue.set_title(
-            "Choisir le dossier des photos"
+            _("Choisir le dossier des photos")
         )
 
         dialogue.select_folder(
@@ -233,7 +236,7 @@ class PDFMyPicsApp(Gtk.Application):
             )
 
             self.label_infos.set_text(
-                "Analyse des photos..."
+                _("Analyse des photos...")
             )
 
             threading.Thread(
@@ -276,7 +279,8 @@ class PDFMyPicsApp(Gtk.Application):
         )
 
         self.label_infos.set_text(
-            f"{total} photos — {exif} dates EXIF"
+            _("%(total)d photos — %(exif)d dates EXIF")
+            % {"total": total, "exif": exif}
         )
 
         if self.dossier:
@@ -345,7 +349,7 @@ class PDFMyPicsApp(Gtk.Application):
         dialogue = Gtk.FileDialog.new()
 
         dialogue.set_title(
-            "Enregistrer le PDF"
+            _("Enregistrer le PDF")
         )
 
         dialogue.save(
@@ -443,8 +447,8 @@ class PDFMyPicsApp(Gtk.Application):
         if not self.photos:
 
             self.message(
-                "Aucune photo",
-                "Sélectionnez d'abord un dossier contenant vos photos."
+                _("Aucune photo"),
+                _("Sélectionnez d'abord un dossier contenant vos photos.")
             )
 
             return
@@ -452,8 +456,8 @@ class PDFMyPicsApp(Gtk.Application):
         if not self.fichier_pdf:
 
             self.message(
-                "Fichier PDF",
-                "Choisissez le fichier PDF de destination."
+                _("Fichier PDF"),
+                _("Choisissez le fichier PDF de destination.")
             )
 
             return
@@ -465,7 +469,7 @@ class PDFMyPicsApp(Gtk.Application):
         self.progress.set_fraction(0)
 
         self.label_progress.set_text(
-            "Création du PDF..."
+            _("Création du PDF...")
         )
 
         threading.Thread(
@@ -540,7 +544,7 @@ class PDFMyPicsApp(Gtk.Application):
         self.progress.set_fraction(1)
 
         self.label_progress.set_text(
-            "✓ PDF créé avec succès"
+            _("✓ PDF créé avec succès")
         )
 
         self.bouton_creer.set_sensitive(
@@ -548,8 +552,9 @@ class PDFMyPicsApp(Gtk.Application):
         )
 
         self.message(
-            "PDF terminé",
-            f"Le fichier a été créé :\n\n{self.fichier_pdf}"
+            _("PDF terminé"),
+            _("Le fichier a été créé :\n\n%(fichier)s")
+            % {"fichier": self.fichier_pdf}
         )
 
         return False
@@ -561,11 +566,11 @@ class PDFMyPicsApp(Gtk.Application):
         )
 
         self.label_progress.set_text(
-            "Erreur"
+            _("Erreur")
         )
 
         self.message(
-            "Erreur",
+            _("Erreur"),
             erreur
         )
 
@@ -599,7 +604,7 @@ class PDFMyPicsApp(Gtk.Application):
                 self.progress.set_fraction(0)
 
                 self.label_progress.set_text(
-                    "Prêt"
+                    _("Prêt")
                 )
 
             except GLib.Error:
