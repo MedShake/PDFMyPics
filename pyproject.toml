@@ -5,15 +5,15 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pdfmypics"
 version = "0.1.0"
-description = "Création de planches contact PDF à partir de photos"
+description = "Create PDF photo contact sheets from a source folder"
 readme = "README.md"
 requires-python = ">=3.12"
 license = "GPL-3.0-or-later"
 
 dependencies = [
-"Pillow>=10.0",
-"reportlab>=4.0",
-"PyGObject>=3.48",
+    "Pillow>=10.0",
+    "reportlab>=4.0",
+    "PyGObject>=3.48",
 ]
 
 [project.scripts]
