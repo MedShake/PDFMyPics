@@ -1,28 +1,78 @@
 # PDFMyPics
 
-Quickly create PDF photo contact sheets from a source folder.
+**PDFMyPics** is a lightweight Linux desktop application for quickly creating PDF photo contact sheets from a folder of images.
 
-PDFMyPics is a lightweight desktop application built with Python and GTK4. It lets you select a folder containing photos, arrange them into a configurable grid, preview the result, and export the photos as a PDF document.
+![PDFMyPics](screenshot.png)
 
-![PDFMyPics screenshot](screenshot.png)
+## Installation
+
+### Debian package (`.deb`)
+
+The **recommended way to install PDFMyPics** is to use the Debian package provided in the project's Releases.
+
+Download the latest `pdfmypics_..._all.deb` package and install it with:
+
+```bash
+sudo apt install ./pdfmypics_0.1.0_all.deb
+```
+The package also installs the application icon, desktop launcher, and translations (Tests made with Linux Mint).
+
+### Updating
+
+New versions are published as `.deb` packages in the project's Releases.
+
+Download the new package and install it using the same command:
+
+```bash
+sudo apt install ./pdfmypics_VERSION_all.deb
+```
+
+## Usage
+
+Launch PDFMyPics from the application menu.
+
+1. Select the folder containing your photos.
+2. Choose the page orientation.
+3. Set the number of rows and columns.
+4. Choose the photo sorting order.
+5. Enable or disable photo dates.
+6. Preview the result.
+7. Choose the output PDF file.
+8. Create the PDF.
+
+Only JPEG (.jpeg, .jpg) photos are supported.
+
+When an EXIF date is available, it is used to sort the photos and can optionally be displayed below each image.
 
 ## Features
 
-* Create PDF contact sheets from JPG and JPEG photos
-* Automatically detect and use EXIF photo dates
+* Create PDF photo contact sheets
+* Automatic EXIF date detection
 * Sort photos by date, ascending or descending
-* Keep photos without EXIF dates at the end of the list
+* Handle photos without an EXIF date
 * Configurable number of rows and columns
-* Optional photo dates displayed below each image
+* Optional photo dates below images
 * Portrait and landscape page orientations
-* Preview the generated pages before creating the PDF
-* Progress indicator during PDF generation
+* Page preview before PDF generation
+* Progress indicator
+* GTK4 graphical interface
 * French and English translations
-* Automatic language detection from the system locale
+* Automatic system language detection
 * Locale-aware date and time formatting
-* Simple GTK4 graphical interface
+* Application icon and desktop menu integration
+* Easy installation and removal using the Debian package manager
 
-## Requirements
+## Releases
+
+Released versions of PDFMyPics are available from the project's GitHub Releases.
+
+Each release automatically produces a Debian `.deb` package.
+
+The package is built automatically by GitHub Actions whenever a new release is published.
+
+## Installation from source
+
+Installing from source is mainly intended for development and testing.
 
 PDFMyPics requires:
 
@@ -32,95 +82,37 @@ PDFMyPics requires:
 * Pillow
 * ReportLab
 
-On Ubuntu/Debian, the required system packages can be installed with:
+On Ubuntu or Linux Mint:
 
 ```bash
-sudo apt install python3 python3-gi gir1.2-gtk-4.0
+sudo apt install python3 python3-gi gir1.2-gtk-4.0 python3-pil python3-reportlab
 ```
 
-The Python dependencies can be installed with:
-
-```bash
-pip install Pillow reportlab
-```
-
-## Running the application
-
-Clone the repository:
-
-```bash
-git clone https://github.com/MedShake/PDFMyPics.git
-cd PDFMyPics
-```
-
-Then run:
+Then, from the project directory:
 
 ```bash
 python3 main.py
 ```
 
-## Usage
+## Translations
 
-1. Launch PDFMyPics.
-2. Select the folder containing your photos.
-3. Choose the desired page orientation.
-4. Select the number of rows and columns.
-5. Choose the photo sorting order.
-6. Optionally enable photo dates.
-7. Preview the result.
-8. Choose the output location and create the PDF.
-
-Photos are read from the selected folder and sorted using their EXIF date when available.
-
-## Internationalization
-
-PDFMyPics currently supports:
+PDFMyPics is currently available in:
 
 * 🇫🇷 French
 * 🇬🇧 English
 
-The application automatically detects the system language.
+The application automatically detects the system language and uses the corresponding translation when available.
 
-Translations are handled using GNU gettext. Translation files are located in:
-
-```text
-locale/
-├── en/
-│   └── LC_MESSAGES/
-├── fr/
-│   └── LC_MESSAGES/
-└── pdfmypics.pot
-```
-
-## Project structure
-
-```text
-PDFMyPics/
-├── main.py
-├── pdfmypics/
-│   ├── __init__.py
-│   ├── app.py
-│   ├── interface.py
-│   ├── photos.py
-│   ├── pdf.py
-│   └── i18n.py
-├── locale/
-├── resources/
-├── tests/
-├── .gitignore
-├── LICENSE
-├── pyproject.toml
-└── readme.md
-```
+Translations are handled using GNU gettext.
 
 ## License
 
-PDFMyPics is free software distributed under the terms of the GNU General Public License version 3 or later (GPL-3.0-or-later).
+PDFMyPics is distributed under the **GNU General Public License version 3 or later (GPL-3.0-or-later)**.
 
 See the [LICENSE](LICENSE) file for details.
 
-## Status
+## Project status
 
 PDFMyPics is currently under development.
 
-Contributions, bug reports, and suggestions are welcome.
+Bug reports, suggestions, and contributions are welcome.
