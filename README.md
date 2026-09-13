@@ -4,6 +4,8 @@ Quickly create PDF photo contact sheets from a source folder.
 
 PDFMyPics is a lightweight desktop application built with Python and GTK4. It lets you select a folder containing photos, arrange them into a configurable grid, preview the result, and export the photos as a PDF document.
 
+![PDFMyPics screenshot](screenshot.png)
+
 ## Features
 
 * Create PDF contact sheets from JPG and JPEG photos
