@@ -1,6 +1,7 @@
 import os
 import threading
 from io import BytesIO
+from . import __version__
 
 import gi
 
@@ -238,11 +239,8 @@ def afficher_a_propos(self):
     dialogue.set_modal(True)
 
     dialogue.set_program_name("PDFMyPics")
-    dialogue.set_version("0.1.0")
-
-    dialogue.set_comments(
-        _("Créez rapidement des planches de vos photos classées par date sous forme de PDF.")
-    )
+    dialogue.set_logo_icon_name("pdfmypics")
+    dialogue.set_version(__version__)
 
     dialogue.set_authors([
         "Bertrand Boutillier <b.boutillier@gmail.com>"

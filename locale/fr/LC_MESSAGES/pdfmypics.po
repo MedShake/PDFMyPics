@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PDFMyPics 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-13 13:15+0200\n"
+"POT-Creation-Date: 2026-09-13 17:41+0200\n"
 "PO-Revision-Date: 2026-09-13 12:46+0200\n"
 "Last-Translator: Bertrand <b.boutillier@gmail.com>\n"
 "Language-Team: French\n"
@@ -17,68 +17,68 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: pdfmypics/app.py:106 pdfmypics/interface.py:44
+#: pdfmypics/app.py:103 pdfmypics/interface.py:40
 msgid "PDFMyPics"
 msgstr "PDFMyPics"
 
-#: pdfmypics/app.py:134
+#: pdfmypics/app.py:131
 msgid "À propos de PDFMyPics"
 msgstr ""
 
-#: pdfmypics/app.py:139
+#: pdfmypics/app.py:136
 msgid "Quitter"
 msgstr ""
 
-#: pdfmypics/app.py:170
+#: pdfmypics/app.py:167
 msgid "Menu"
 msgstr ""
 
-#: pdfmypics/app.py:212
+#: pdfmypics/app.py:209
 msgid "Choisir le dossier des photos"
 msgstr ""
 
-#: pdfmypics/app.py:242
+#: pdfmypics/app.py:239
 msgid "Analyse des photos..."
 msgstr ""
 
-#: pdfmypics/app.py:285
+#: pdfmypics/app.py:282
 #, python-format
 msgid "%(total)d photos — %(exif)d dates EXIF"
 msgstr ""
 
-#: pdfmypics/app.py:355
+#: pdfmypics/app.py:352
 msgid "Enregistrer le PDF"
 msgstr ""
 
-#: pdfmypics/app.py:453 pdfmypics/interface.py:271
+#: pdfmypics/app.py:450 pdfmypics/interface.py:264
 msgid "Aucune photo"
 msgstr ""
 
-#: pdfmypics/app.py:454
+#: pdfmypics/app.py:451
 msgid "Sélectionnez d'abord un dossier contenant vos photos."
 msgstr ""
 
-#: pdfmypics/app.py:462
+#: pdfmypics/app.py:459
 msgid "Fichier PDF"
 msgstr ""
 
-#: pdfmypics/app.py:463
+#: pdfmypics/app.py:460
 msgid "Choisissez le fichier PDF de destination."
 msgstr ""
 
-#: pdfmypics/app.py:475
+#: pdfmypics/app.py:472
 msgid "Création du PDF..."
 msgstr ""
 
-#: pdfmypics/app.py:550
+#: pdfmypics/app.py:547
 msgid "✓ PDF créé avec succès"
 msgstr ""
 
-#: pdfmypics/app.py:558
+#: pdfmypics/app.py:555
 msgid "PDF terminé"
 msgstr ""
 
-#: pdfmypics/app.py:559
+#: pdfmypics/app.py:556
 #, python-format
 msgid ""
 "Le fichier a été créé :\n"
@@ -86,131 +86,123 @@ msgid ""
 "%(fichier)s"
 msgstr ""
 
-#: pdfmypics/app.py:572 pdfmypics/app.py:576
+#: pdfmypics/app.py:569 pdfmypics/app.py:573
 msgid "Erreur"
 msgstr ""
 
-#: pdfmypics/app.py:610 pdfmypics/interface.py:169
+#: pdfmypics/app.py:607 pdfmypics/interface.py:165
 msgid "Prêt"
 msgstr ""
 
-#: pdfmypics/interface.py:51
-msgid "Créez rapidement des planches de vos photos "
-msgstr ""
-
-#: pdfmypics/interface.py:52
-msgid "classées par date sous forme de PDF."
-msgstr ""
-
-#: pdfmypics/interface.py:68
-msgid "Photos"
-msgstr ""
-
-#: pdfmypics/interface.py:73
-msgid "Aucun dossier sélectionné"
-msgstr ""
-
-#: pdfmypics/interface.py:78
-msgid "📁 Choisir un dossier"
-msgstr ""
-
-#: pdfmypics/interface.py:83
-msgid "Aucune photo chargée"
-msgstr ""
-
-#: pdfmypics/interface.py:92
-msgid "Mise en page"
-msgstr ""
-
-#: pdfmypics/interface.py:103
-msgid "Colonnes"
-msgstr ""
-
-#: pdfmypics/interface.py:112
-msgid "Lignes"
-msgstr ""
-
-#: pdfmypics/interface.py:121
-msgid "Orientation"
-msgstr ""
-
-#: pdfmypics/interface.py:123
-msgid "Paysage"
-msgstr ""
-
-#: pdfmypics/interface.py:123
-msgid "Portrait"
-msgstr ""
-
-#: pdfmypics/interface.py:130
-msgid "Tri par dates"
-msgstr ""
-
-#: pdfmypics/interface.py:133
-msgid "Plus récentes → plus anciennes"
-msgstr ""
-
-#: pdfmypics/interface.py:133
-msgid "Plus anciennes → plus récentes"
-msgstr ""
-
-#: pdfmypics/interface.py:141
-msgid "Afficher date et heure"
-msgstr ""
-
-#: pdfmypics/interface.py:150
-msgid "Fichier de sortie"
-msgstr ""
-
-#: pdfmypics/interface.py:155
-msgid "Aucun fichier PDF"
-msgstr ""
-
-#: pdfmypics/interface.py:161
-msgid "💾 Choisir le fichier PDF"
-msgstr ""
-
-#: pdfmypics/interface.py:180
-msgid "Créer le PDF"
-msgstr ""
-
-#: pdfmypics/interface.py:198
-msgid "Prévisualisation"
-msgstr ""
-
-#: pdfmypics/interface.py:224
-msgid "Page 0 / 0"
-msgstr ""
-
-#: pdfmypics/interface.py:248
+#: pdfmypics/interface.py:47
 msgid ""
 "Créez rapidement des planches de vos photos classées par date sous forme de "
 "PDF."
 msgstr ""
 
-#: pdfmypics/interface.py:261
+#: pdfmypics/interface.py:64
+msgid "Photos"
+msgstr ""
+
+#: pdfmypics/interface.py:69
+msgid "Aucun dossier sélectionné"
+msgstr ""
+
+#: pdfmypics/interface.py:74
+msgid "📁 Choisir un dossier"
+msgstr ""
+
+#: pdfmypics/interface.py:79
+msgid "Aucune photo chargée"
+msgstr ""
+
+#: pdfmypics/interface.py:88
+msgid "Mise en page"
+msgstr ""
+
+#: pdfmypics/interface.py:99
+msgid "Colonnes"
+msgstr ""
+
+#: pdfmypics/interface.py:108
+msgid "Lignes"
+msgstr ""
+
+#: pdfmypics/interface.py:117
+msgid "Orientation"
+msgstr ""
+
+#: pdfmypics/interface.py:119
+msgid "Paysage"
+msgstr ""
+
+#: pdfmypics/interface.py:119
+msgid "Portrait"
+msgstr ""
+
+#: pdfmypics/interface.py:126
+msgid "Tri par dates"
+msgstr ""
+
+#: pdfmypics/interface.py:129
+msgid "Plus récentes → plus anciennes"
+msgstr ""
+
+#: pdfmypics/interface.py:129
+msgid "Plus anciennes → plus récentes"
+msgstr ""
+
+#: pdfmypics/interface.py:137
+msgid "Afficher date et heure"
+msgstr ""
+
+#: pdfmypics/interface.py:146
+msgid "Fichier de sortie"
+msgstr ""
+
+#: pdfmypics/interface.py:151
+msgid "Aucun fichier PDF"
+msgstr ""
+
+#: pdfmypics/interface.py:157
+msgid "💾 Choisir le fichier PDF"
+msgstr ""
+
+#: pdfmypics/interface.py:176
+msgid "Créer le PDF"
+msgstr ""
+
+#: pdfmypics/interface.py:194
+msgid "Prévisualisation"
+msgstr ""
+
+#: pdfmypics/interface.py:220
+msgid "Page 0 / 0"
+msgstr ""
+
+#: pdfmypics/interface.py:254
 msgid ""
 "PDFMyPics est un logiciel libre distribué sous licence GNU General Public "
 "License version 3 ou ultérieure."
 msgstr ""
 
-#: pdfmypics/interface.py:288 pdfmypics/pdf.py:268
+#: pdfmypics/interface.py:281 pdfmypics/pdf.py:263
 #, python-format
 msgid "Page %(page)d / %(total)d"
 msgstr ""
 
-#: pdfmypics/interface.py:376 pdfmypics/pdf.py:229
+#: pdfmypics/interface.py:369 pdfmypics/pdf.py:224
 msgid "date inconnue"
 msgstr ""
 
-#: pdfmypics/interface.py:408
+#: pdfmypics/interface.py:401
 msgid "Erreur aperçu :"
 msgstr ""
 
-#: pdfmypics/interface.py:430
+#: pdfmypics/interface.py:423
 msgid "Erreur affichage aperçu :"
 msgstr ""
 
-#: pdfmypics/pdf.py:253
+#: pdfmypics/pdf.py:248
 msgid "Erreur :"
 msgstr ""

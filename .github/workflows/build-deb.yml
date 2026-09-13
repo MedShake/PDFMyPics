@@ -28,6 +28,7 @@ jobs:
           mkdir -p package/usr/share/icons/hicolor/scalable/apps
 
           cp main.py package/usr/lib/pdfmypics/
+          cp pyproject.toml package/usr/lib/pdfmypics/
           cp -r pdfmypics package/usr/lib/pdfmypics/
           cp -r resources package/usr/lib/pdfmypics/
           cp -r locale/* package/usr/share/locale/
