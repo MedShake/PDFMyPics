@@ -1,7 +1,11 @@
 name: Build Debian package
 
 on:
-  workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
 
 jobs:
   build-deb:
@@ -11,20 +15,53 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install build tools
+      - name: Build Debian package
+        env:
+          RELEASE_VERSION: ${{ github.event.release.tag_name }}
         run: |
-          python -m pip install --upgrade pip
-          pip install build
+          VERSION="${RELEASE_VERSION#v}"
 
-      - name: Build package
-        run: |
-          python -m build
+          mkdir -p package/DEBIAN
+          mkdir -p package/usr/bin
+          mkdir -p package/usr/lib/pdfmypics
+          mkdir -p package/usr/share/locale
+          mkdir -p package/usr/share/icons/hicolor/scalable/apps
 
-      - name: List generated files
+          cp main.py package/usr/lib/pdfmypics/
+          cp -r pdfmypics package/usr/lib/pdfmypics/
+          cp -r resources package/usr/lib/pdfmypics/
+          cp -r locale/* package/usr/share/locale/
+          cp resources/pdfmypics.svg package/usr/share/icons/hicolor/scalable/apps/
+
+          mkdir -p package/usr/share/applications
+          cp pdfmypics.desktop package/usr/share/applications/
+
+          cat > package/usr/bin/pdfmypics <<'EOF'
+          #!/bin/sh
+          exec python3 /usr/lib/pdfmypics/main.py "$@"
+          EOF
+
+          chmod +x package/usr/bin/pdfmypics
+
+          cat > package/DEBIAN/control <<EOF
+          Package: pdfmypics
+          Version: ${VERSION}
+          Section: graphics
+          Priority: optional
+          Architecture: all
+          Depends: python3 (>= 3.12), python3-gi, gir1.2-gtk-4.0, python3-pil, python3-reportlab
+          Maintainer: PDFMyPics
+          Description: Create PDF photo contact sheets from a source folder
+           Quickly create PDF photo contact sheets from a source folder.
+          EOF
+
+          dpkg-deb --build package "pdfmypics_${VERSION}_all.deb"
+
+          ls -lh *.deb
+
+      - name: Upload package to GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
-          ls -lh dist/
+          gh release upload "$RELEASE_TAG" *.deb --clobber

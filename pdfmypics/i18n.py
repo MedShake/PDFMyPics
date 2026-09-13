@@ -2,12 +2,10 @@ import gettext
 import locale
 import os
 
-
 APP_NAME = "pdfmypics"
 
 
 def initialiser_traduction():
-
     locale.setlocale(locale.LC_ALL, "")
 
     langue, _ = locale.getlocale()
@@ -25,6 +23,9 @@ def initialiser_traduction():
         ),
         "locale"
     )
+
+    if not os.path.isdir(repertoire):
+        repertoire = "/usr/share/locale"
 
     traduction = gettext.translation(
         APP_NAME,

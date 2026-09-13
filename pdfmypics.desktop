@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=PDFMyPics
+Comment=Create PDF photo contact sheets from a source folder
+Exec=pdfmypics
+Icon=pdfmypics
+Terminal=false
+Categories=Graphics;Photography;
+StartupNotify=true
